@@ -35,7 +35,7 @@ def load_covalent_molecules(protein_inputs, config, model_runner):
     if config.sm_inputs is None:
         raise ValueError("If you provide covale_inputs, you must also provide small molecule inputs")
      
-    covalent_bonds = eval(config.covale_inputs)
+    covalent_bonds = config.covale_inputs
     sm_inputs = delete_leaving_atoms(config.sm_inputs)
     residues_to_atomize, combined_molecules, extra_bonds = find_residues_to_atomize(protein_inputs, sm_inputs, covalent_bonds, model_runner)
     chainid_to_input = {}
