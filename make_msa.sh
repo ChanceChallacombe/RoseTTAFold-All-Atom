@@ -14,7 +14,7 @@ DB_TEMPL="$5"
 # current script directory (i.e., pipe directory)
 SCRIPT=`realpath -s $0`
 export PIPE_DIR=`dirname $SCRIPT`
-
+echo $PIPE_DIR
 # sequence databases
 DB_UR30="$6"
 DB_BFD="$7"

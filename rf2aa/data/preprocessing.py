@@ -16,8 +16,8 @@ def make_msa(
     hash = model_runner.config.job_name
      # out_dir = out_dir_base / hash / chain  # TODO: cache MSAs
     out_dir = out_dir_base / "msa_results" / chain
-
-    shutil.rmtree(out_dir)
+    if out_dir.exists():
+       shutil.rmtree(out_dir)
 
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -33,8 +33,8 @@ def make_msa(
     out_atab = out_dir / "t000_.atab"
     out_hhr = out_dir / "t000_.hhr"
 
-    #if out_a3m.exists() and out_atab.exists() and out_hhr.exists():
-    #    return out_a3m, out_hhr, out_atab
+    # if out_a3m.exists() and out_atab.exists() and out_hhr.exists():
+    #     return out_a3m, out_hhr, out_atab
 
     search_command = f"./{command} {fasta_file} {out_dir} {num_cpus} {ram_gb} {template_database} {ur30_search_base} {bfd_search_base}"
     print(search_command)
